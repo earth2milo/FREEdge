@@ -1,0 +1,416 @@
+
+/*********************** TOP MENU AND GLOBAL STLYING ************************/
+html:focus-within {
+    scroll-behavior:smooth;
+}
+
+body { /* body properties */
+    margin:0;
+    font-family: 'Karla', sans-serif;
+    font-weight:300;
+    
+   
+}
+
+img {  /* global image properties */
+    max-width:100%;
+    max-height:100%;
+}
+
+
+#heartLogo{
+width: 12rem;
+shape-outside:circle(50%);
+shape-margin: 1rem;
+flex-shrink:0;
+}
+.Sublogo {
+    width: 8rem;
+    float:left;
+    shape-outside:circle(50%);
+    shape-margin: 1rem;
+    padding:1rem;
+    object-fit:fill;
+    overflow:hidden;
+  
+   
+}
+ 
+
+#Fridge {
+float:none;
+left:50%;
+right:50%;
+
+}
+
+#fridgeFlex {
+align-items: center;
+justify-content: center;
+}
+    
+#makerFlex {
+align-items:stretch;
+}
+
+#forkFlex {
+flex-flow:row;
+}
+#maker {
+width:50%;
+}
+
+#DFA {
+    width:250%;
+}
+
+
+.landingText {
+  /*  border-left: 1.5vh solid #56308C;  */
+}
+
+.intro {
+  
+    float:left;
+    font-size: 2.3rem;
+    right:50%;
+    font-family: 'Karla', sans-serif;
+}
+
+#textBawx{
+    float:left;
+    display:flexbox
+}
+
+.social_wrapper {
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    
+    gap: 0.5em;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #56308C;
+  
+}
+.media {
+
+}
+.media ul {
+display:flex;
+
+
+}
+
+.media ul li{
+    position:relative;
+    display:block;
+    color:#56308C;
+    font-size: 30px;
+    height:10vh;
+    width:10vh;
+}
+
+
+
+.body {
+    font-size:1.2rem;
+    top:50%;
+    left:50%;
+    font-family: 'Karla', sans-serif;
+   
+}
+
+.grid-col-span-2 {
+grid-column: span 2;
+
+}
+
+.text-grid{
+    display:grid;
+    padding-block: 2rem;
+   /* width: min(95%, 70rem); */
+    gap:1.5rem;
+    grid-template-columns: repeat(3, 1fr);  /* grid box unit fraction */
+
+}
+
+.flex{
+    display:flex;
+
+}
+
+.text{
+padding:2rem;
+border-radius:0.5rem;
+font: size 8vh;
+ font-family: 'Merriweather Sans', sans-serif;
+    
+}
+.text:hover{
+    box-shadow: 3.75rem 3.75rem 3rem -3rem #56308C;
+    background-color:ivory;
+}
+
+
+.site{
+    background-color:white;
+    margin:0;
+    padding:0;
+  /*  border-bottom: 1.5vh solid #56308C; */
+
+}
+
+#flow{
+    background-image: url(/assets/home.JPG);
+}
+
+#container{ /* container for homebar */
+/*width:80%; */
+height:auto;
+margin:0 auto;
+}
+
+.logo { /* org logo */
+    height:15vh;
+    width:40vh;
+    float: left;
+    padding: 2vh;
+    display:block;
+    object-position:center;
+    transition: transform .5s ease-in-out;
+}
+
+.logo:hover {
+transform:rotate(360deg);
+}
+
+
+nav{
+float:right;
+width:30%;
+height:10%;
+
+}
+
+header{
+background:#56308C;
+
+}
+
+header::after { /* after making the logo and nav list respectively float to opposite directions, my header color dissapears, so to counteract this I set an after property */
+content: '';
+display:table;
+clear:both;
+}
+
+nav ul { /* targetting the unordered list within nav if i need to use another UL */
+margin:0;
+padding:0;
+list-style: none; /* removing bullet points */
+}
+ul {
+    list-style: none;
+}
+nav li { /* same concept as targetting UL */
+margin-left:8vh; /* spacing between text */
+display:inline-block;
+padding-top:5vh;
+position:relative;
+}
+
+nav a { /* links in nav */
+color:white;
+text-decoration: none;
+text-transform:capitalize;
+font-size: 2.4vh;
+font-family: 'Karla', sans-serif;
+
+}
+
+nav a:hover {
+    color:#FFFACA;
+}
+
+nav a::before { /* setting up the interaction animation for hovering over menu elements */
+    content:''; /* declaring content */
+    display:block;
+    height: 0.5vh; 
+    width:0; /* hiding bar */
+    background-color:white;
+    position:absolute;
+    top:0;
+
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {  /* double sudo! */
+width:100%; /* displaying bar!! */
+
+}
+
+/*************** END OF TOP MENU AND GLOBAL STYLING *************/
+/********IMAGE CAROUSEL STYLING****/
+*,*::before, *::after {  /*** global sudo elements for sizing before and after **/
+    box-sizing:border-box;
+
+}
+
+.carousel {
+    width:100vw;
+    height:100vh;
+    position:relative;
+}
+.carousel > ul {
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+.slide[data-active] { /*** data active tag in HTML!**/
+    opacity:1;
+    transition-delay:0ms;
+    z-index:1;
+}
+
+.slide > img {
+display:block;
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+}
+
+.carousel-button {
+    position:absolute;
+    background:none;
+    border:none;
+    font-size:4rem;
+    top:50%;
+    z-index:2;
+    transform:translateY(-50%);
+    color:rgba(255,255,255,0.5);
+    cursor:pointer;
+    border-radius:0.25rem;
+    padding:0 0.5rem;
+    background-color:rgba(0,0,0,0.1);
+    background-size:50%;
+}
+
+
+.carousel-button:hover,
+.carousel-button:focus { /* sudo element focus is an event trigger that happens when you click on an element */
+    color:#56308C;
+    background-color:rgba(0,0,0,0.3);
+
+}
+
+.carousel-button:focus {  /* focus becomes useful for users who press tab on their keyboard to navigate different elements */
+    outline:1px solid black;
+}
+
+.carousel-button.prev {
+    left:1rem;
+}
+
+.carousel-button.next {
+    right:1rem;
+}
+
+
+
+                        /* FAQ Styling */
+.faq-heading{
+    padding:0.5rem 1.5rem;
+  border-radius: 10%;
+    border-color:#56308C;
+   
+
+}
+
+.answer iframe {
+    border-radius: 5%;
+
+
+}
+
+.faq-container{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hr-line{
+    width:60%;
+    margin:auto;
+}
+
+.faq-question {
+    cursor: pointer;
+    padding: 2rem 1.5rem;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+}
+
+.answer {
+    margin:auto;
+    width:50%;
+    padding:auto;
+}
+
+.active,
+.faq-question:hover {
+    background-color: #F9F9F9;
+}
+
+.answer {
+    padding: 0 1rem;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.faq-question::after{
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 1rem;
+    color: #777;
+    float: right;
+    margin-left: 0.5rem;
+}
+
+.active:after {
+    content:"\2796";  /* minus sign unicode" */
+}
+
+.FAQmain {
+
+
+}
+
+#posterFlex{
+display:flex;
+justify-content: center;
+padding:0.8rem;
+
+
+}
+
+/*///////////////// CREATE YOUR OWN FRIDGE STYLING ///////////////////////*/
+
+#create_grid {
+    background-image: url(/assets/photos/your_fridge.png);
+    background-repeat: no-repeat;
+    background-size:90% 90%;
+    background-position: center;
+}
+
